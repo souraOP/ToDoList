@@ -8,15 +8,17 @@
   <div class="box">
       <!-- need to use a for loop inorder to store more list -->
       
-      <% for(let i = 0; i < kindOfItems.length; i++) {  %>
+    <% kindOfItems.forEach(function(item){ %>
+      <form action="/delete" method="post">
         <div class="item">
-          <input type="checkbox">
-          <p><%= kindOfItems[i] %></p>
+          <input type="checkbox" name = "checkbox" value = "<%= item._id %>" onchange="this.form.submit()">
+          <p><%=item.name%></p>
         </div>
-      <% } %>
+      </form>
+    <% }) %>
       <form class = "item" action="/" method="post">
         <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-        <button type="submit" name="list" value=<%= listTitle %>>+</button>
+        <button type="submit" name="list" value="<%= listTitle %>">+</button>
       </form>
 
   </div>
